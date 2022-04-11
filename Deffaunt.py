@@ -14,13 +14,13 @@ def main():
     agent = [random.random() for i in range(0, N)]  # assigning between 0 and 1 for agents opinions
 
 
+# agent is the array to store the agents opinions, while agent[ai] would mean agent i's opinion
+
 def share():
     global agent, agenti
-    l = 0
     for randomagent in range(N):
         ai = random.randint(0, N - 1)
         aj = random.randint(0, N - 1)
-        l += 1
         if ai != aj:
             break
 
