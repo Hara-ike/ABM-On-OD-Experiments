@@ -154,4 +154,3 @@ extrePlot()
 diffusion()
 """
 
-print(Extremists())
