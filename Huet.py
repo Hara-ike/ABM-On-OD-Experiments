@@ -4,12 +4,11 @@ import random
 import matplotlib.pyplot as plt
 import networkx as nx
 
-mu = 0.2  # Kinetic Paramter representing velocity rejection
-U = 0.1  # Uncertainty for attitudes
+mu = 0.3  # Kinetic Paramter representing velocity of rejection
+U = 0.6  # Uncertainty for attitudes
 delta = 0  # confidence threshold for uncertainty
-max_iter = 7000000  # Number of iterations (Time count)
+max_iter = 10000000  # Number of iterations (Time count)
 N = 1000  # Number of agents
-
 
 
 def ps(s):
@@ -19,6 +18,7 @@ def ps(s):
     else:
         New_attitude = 1
     return New_attitude
+
 
 # at1 = attitude 1 and at2 = attitude 2, incase at1[i], it would be attitude 1 of agent i
 
@@ -129,7 +129,7 @@ def alliter():  # iteration Vs opinion diffusion graph
     plt.plot(iteration, diffusion, "b.")
     plt.xlabel('Iteration', fontsize=10)
     plt.ylabel('Opinions', fontsize=10)
-    plt.savefig('6.png')
+    plt.savefig('31.png')
 
 
 def diffusion():  # Final Diffused opinion Vs Agents Graph
@@ -137,7 +137,7 @@ def diffusion():  # Final Diffused opinion Vs Agents Graph
     for it in range(max_iter):
         share()
 
-    plt.plot(at2, at1, 'bo')
+    plt.plot(AllAgents, at1, 'bo')
     plt.xlabel('Agents', fontsize=10)
     plt.ylabel('Opinion', fontsize=10)
     plt.show()
@@ -153,4 +153,3 @@ cluster()
 extrePlot()
 diffusion()
 """
-
