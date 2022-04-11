@@ -4,8 +4,8 @@ import random
 import matplotlib.pyplot as plt
 
 mu = 0.5  # Convergence paramter (range 0.1 to 0.5)
-d = 0.1  # threshold
-max_iter = 60000  # Number of iterations (Time count)
+d = 0.5  # threshold
+max_iter = 150000  # Number of iterations (Time count)
 N = 1000  # Number of agents
 
 
@@ -118,7 +118,8 @@ main()
 # (use one function at a time, running two might not give accurate results).
 """
 alliter()
-diffusion()
+
 extrePlot()
 cluster()
 """
+diffusion()
