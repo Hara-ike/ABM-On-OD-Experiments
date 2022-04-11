@@ -118,8 +118,8 @@ main()
 # (use one function at a time, running two might not give accurate results).
 """
 alliter()
-
+diffusion()
 extrePlot()
 cluster()
 """
-diffusion()
+
