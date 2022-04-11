@@ -4,7 +4,7 @@ import random
 import matplotlib.pyplot as plt
 import networkx as nx
 
-mu = 0.2  # Kinetic Paramter representing velocity of attraction and rejection
+mu = 0.2  # Kinetic Paramter representing velocity rejection
 U = 0.1  # Uncertainty for attitudes
 delta = 0  # confidence threshold for uncertainty
 max_iter = 7000000  # Number of iterations (Time count)
