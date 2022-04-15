@@ -4,8 +4,8 @@ import random
 import matplotlib.pyplot as plt
 
 mu = 0.5  # Convergence paramter (range 0.1 to 0.5)
-d = 0.5  # threshold
-max_iter = 150000  # Number of iterations (Time count)
+d = 0.1  # threshold
+max_iter = 60000  # Number of iterations (Time count)
 N = 1000  # Number of agents
 
 
@@ -25,7 +25,7 @@ def share():
             break
 
     diff = abs(agent[ai] - agent[aj])
-    if d > diff:
+    if diff < d:
         agent[ai] = agent[ai] + mu * (agent[aj] - agent[ai])
         agent[aj] = agent[aj] + mu * (agent[ai] - agent[aj])
 
@@ -73,7 +73,7 @@ def cluster():
         cm.append(cc)
 
     for l in cm:
-        if len(l) >= 8:
+        if len(l) >= 3:
             ctr += 1
     print("Number of Clusters = ", ctr)
 
@@ -122,4 +122,3 @@ diffusion()
 extrePlot()
 cluster()
 """
-
