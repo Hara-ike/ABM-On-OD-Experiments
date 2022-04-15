@@ -4,10 +4,10 @@ import random
 import matplotlib.pyplot as plt
 import networkx as nx
 
-mu = 0.3  # Kinetic Paramter representing velocity of rejection
-U = 0.6  # Uncertainty for attitudes
+mu = 0.5  # Kinetic Parameter representing velocity of rejection
+U = 0.25 # Uncertainty for attitudes
 delta = 0  # confidence threshold for uncertainty
-max_iter = 10000000  # Number of iterations (Time count)
+max_iter = 100000  # Number of iterations (Time count)
 N = 1000  # Number of agents
 
 
@@ -55,10 +55,8 @@ def share():  # the part where interaction occurs and the attitudes are updated
         else:
             at2[i] = at2[i] - (mu * ps(at2[j] - at2[i])) * (U - (abs(at2[j] - at2[i])))
 
-    if abs(at1[i]) > 1:
-        at1[i] = ps(at1[i])
-    if abs(at2[i]) > 1:
-        at2[i] = ps(at2[i])
+    if abs(at1[i]) > 1: at1[i] = ps(at1[i])
+    if abs(at2[i]) > 1: at2[i] = ps(at2[i])
 
 
 def Extremists():  # algorithm to identify Extremists in the system
@@ -104,7 +102,7 @@ def cluster():
         cm.append(cc)
 
     for l in cm:
-        if len(l) >= 8:
+        if len(l) >= 3:
             ctr = ctr + 1
     print("Number of Clusters = ", ctr)
 
@@ -117,7 +115,7 @@ def alliter():  # iteration Vs opinion diffusion graph
     iteration = np.arange(1, max_iter + 1)
     for it in range(max_iter):
         share()
-        for value in at1:
+        for value in at2:
             agenti.append(value)
 
     cluster_Size = N
@@ -128,8 +126,8 @@ def alliter():  # iteration Vs opinion diffusion graph
 
     plt.plot(iteration, diffusion, "b.")
     plt.xlabel('Iteration', fontsize=10)
-    plt.ylabel('Opinions', fontsize=10)
-    plt.savefig('31.png')
+    plt.ylabel('Attitude 2', fontsize=10)
+    plt.savefig('25.png')
 
 
 def diffusion():  # Final Diffused opinion Vs Agents Graph
@@ -137,9 +135,9 @@ def diffusion():  # Final Diffused opinion Vs Agents Graph
     for it in range(max_iter):
         share()
 
-    plt.plot(AllAgents, at1, 'bo')
+    plt.plot(AllAgents, at2, 'bo')
     plt.xlabel('Agents', fontsize=10)
-    plt.ylabel('Opinion', fontsize=10)
+    plt.ylabel('Attribute 1', fontsize=10)
     plt.show()
 
 
@@ -149,7 +147,8 @@ main()
 # (use one function at a time, running two might not give accurate results).
 """
 alliter()
-cluster()
 extrePlot()
 diffusion()
+cluster()
 """
+
