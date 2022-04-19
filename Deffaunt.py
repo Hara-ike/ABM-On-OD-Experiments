@@ -14,7 +14,7 @@ def main():
     agent = [random.random() for i in range(0, N)]  # assigning between 0 and 1 for agents opinions
 
 
-# agent is the array to store the agents opinions, while agent[ai] would mean agent i's opinion
+# Agent is the array to store the agents opinions, while agent[ai] would mean agent i's opinion
 
 def share():
     global agent, agenti
