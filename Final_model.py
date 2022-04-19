@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 mu = 0.5  # Kinetic Parameter representing velocity of rejection and attraction
 U_same = 0.25  # Uncertainty for opinion in same neighbourhood
-U_diff = 0.1  # Uncertainty for opinion in different neighbourhood
+U_diff = 0.15  # Uncertainty for opinion in different neighbourhood
 delta = 1  # confidence threshold for uncertainty
 max_iter = 10000000  # Number of iterations (Time count)
 N = 1000  # Number of agents
@@ -30,7 +30,7 @@ def ps(s):
 # op1 = opinion 1 and op2 = opinion 2, incase op1[i], it would be opinion 1 of agent i
 
 def main():
-    global op1, op2, opi1, opi2, opj1, opj2, agenti, community, features, Cul_percent
+    global op1, op2, opi1, opi2, opj1, opj2, agenti, community, features
     op1 = [random.uniform(-1, 1) for i in range(0, N)]  # assigning between -1 and 1 for attitudes
     op2 = [random.uniform(-1, 1) for i in range(0, N)]  # assigning between -1 and 1 for attitudes
     community = [random.randint(1, c) for i in range(N)]  # creating a community of agents (Environment of near agents)
@@ -38,7 +38,7 @@ def main():
 
 
 def share():  # the part where interaction occurs and the attitudes are updated
-    global op1, op2, opi1, opi2, opj1, opj2, agenti, community, features, Cul_percent
+    global op1, op2, opi1, opi2, opj1, opj2, agenti, community, features, similarity
 
     for randomagent in range(N):
         i = random.randint(0, N - 1)
@@ -56,13 +56,13 @@ def share():  # the part where interaction occurs and the attitudes are updated
     feature_i = features[i]
     feature_j = features[j]
 
-    Cul_percent = 0
+    similarity = 0
     for trait in range(f_size):
         if feature_i[trait] == feature_j[trait]:
-            Cul_percent = Cul_percent + 1
-    Cul_percent = Cul_percent * (1 / f_size) * 100
+            similarity = similarity + 1
+    similarity = similarity * (1 / f_size) * 100
 
-    if Cul_percent >= cult:
+    if similarity >= cult:
         for change in range(f_size):
             if feature_i[change] != feature_j[change]:
                 feature_i[change] = feature_j[change]
@@ -216,9 +216,9 @@ main()
 # you can uncomment only one function and use it to run that specific part of the model
 # (use one function at a time, running two might not give accurate results).
 """
-diffusion()
+cluster()
 alliter()
 extrePlot()
-cluster()
+diffusion()
 """
 
