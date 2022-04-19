@@ -28,7 +28,7 @@ def main():
     at2 = [random.uniform(-1, 1) for i in range(0, N)]  # assigning between -1 and 1 for attitudes
 
 
-def share():  # the part where interaction occurs and the attitudes are updated
+def share():  # The part where interaction occurs and the attitudes are updated
     global at1, at2, agenti
 
     for randomagent in range(N):
