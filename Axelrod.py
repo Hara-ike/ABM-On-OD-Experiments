@@ -10,7 +10,7 @@ lat_accept = 0.2  # latitude of acceptance by agent
 lat_reject = 1.2  # latitude of rejection by agent
 cult = 20  # percentage of cultural exchange
 f_size = 5  # size of a single feature
-number_of_traits = 4  # number of traits per feature (range from 0 to 4)
+number_of_traits = 9  # number of traits per feature (range from 0 to 9)
 
 
 def main():
