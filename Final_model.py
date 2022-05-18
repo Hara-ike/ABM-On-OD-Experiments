@@ -3,19 +3,18 @@ import numpy as np
 import random
 import matplotlib.pyplot as plt
 
-
 mu = 0.5  # Kinetic Parameter representing velocity of rejection and attraction
-U_same = 0.25  # Uncertainty for opinion in same neighbourhood
-U_diff = 0.15  # Uncertainty for opinion in different neighbourhood
+U_same = 0.55  # Uncertainty for opinion in same neighbourhood
+U_diff = 0.45  # Uncertainty for opinion in different neighbourhood
 delta = 1  # confidence threshold for uncertainty
 max_iter = 10000000  # Number of iterations (Time count)
 N = 1000  # Number of agents
-c = 50  # Number of neighbourhoods present in a community
-lat_accept = 0.3  # latitude of acceptance by agent i for same neighbourhoods
-lat_reject = 1.2  # latitude of rejection by agent i for same neighbourhoods
+c = 5  # Number of neighbourhoods present in a community
+lat_accept = 0.5  # latitude of acceptance by agent i for same neighbourhoods
+lat_reject = 1.4  # latitude of rejection by agent i for same neighbourhoods
 cult = 20  # percentage of cultural exchange
 f_size = 5  # size of a single feature
-number_of_traits = 9  # number of traits per feature (range from 0 to 9)
+number_of_traits = 9  # number of traits per feature (range from 0 to 4)
 
 
 def ps(s):
@@ -147,7 +146,7 @@ def extrePlot():  # iteration Vs Extremists plot
     plt.plot(iter, extre, "b-")
     plt.xlabel('Iteration', fontsize=10)
     plt.ylabel('Extremists', fontsize=10)
-    plt.show()
+    plt.savefig("1.png")
 
 
 def cluster():
@@ -172,7 +171,7 @@ def cluster():
         cm.append(cc)
 
     for l in cm:
-        if len(l) >= 3:
+        if len(l) >= 5:
             ctr = ctr + 1
     print("Number of Clusters = ", ctr)
 
@@ -197,7 +196,7 @@ def alliter():  # iteration Vs opinion diffusion graph
     plt.plot(iteration, diffusion, "b.")
     plt.xlabel('Iteration', fontsize=10)
     plt.ylabel('Opinion 2', fontsize=10)
-    plt.savefig('l.png')
+    plt.show()
 
 
 def diffusion():  # Final Diffused opinion Vs Agents Graph
@@ -205,7 +204,7 @@ def diffusion():  # Final Diffused opinion Vs Agents Graph
     for it in range(max_iter):
         share()
 
-    plt.plot(op2, op1, 'bo')
+    plt.plot(AllAgents, op1, 'bo')
     plt.xlabel('Agents', fontsize=10)
     plt.ylabel('Opinion 1', fontsize=10)
     plt.show()
@@ -221,4 +220,3 @@ alliter()
 extrePlot()
 diffusion()
 """
-
