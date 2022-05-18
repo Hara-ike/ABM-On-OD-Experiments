@@ -10,7 +10,7 @@ U_Diff = 0.15  # Uncertainty for opinions in diff group
 delta = 1  # confidence threshold for uncertainty
 max_iter = 10000000  # Number of iterations (Time count)
 N = 1000  # Number of agents
-c = 5  # maximum number of communities in the model
+c = 50  # maximum number of communities in the model
 
 def ps(s):
     New_attitude = 0
