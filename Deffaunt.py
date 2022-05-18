@@ -3,7 +3,7 @@ import numpy as np
 import random
 import matplotlib.pyplot as plt
 
-mu = 0.5  # Convergence paramter (range 0.1 to 0.5)
+mu = 0.5  # Convergence parameter (range 0.1 to 0.5)
 d = 0.1  # threshold
 max_iter = 60000  # Number of iterations (Time count)
 N = 1000  # Number of agents
@@ -14,7 +14,7 @@ def main():
     agent = [random.random() for i in range(0, N)]  # assigning between 0 and 1 for agents opinions
 
 
-# Agent is the array to store the agents opinions, while agent[ai] would mean agent i's opinion
+# agent is the array to store the agents opinions, while agent[ai] would mean agent i's opinion
 
 def share():
     global agent, agenti
