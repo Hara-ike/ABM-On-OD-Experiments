@@ -4,10 +4,10 @@ import random
 import matplotlib.pyplot as plt
 
 mu = 0.5  # Convergence parameter (range 0.1 to 0.5)
-max_iter = 10000000  # Number of iterations (Time count)
+max_iter = 1000000  # Number of iterations (Time count)
 N = 1000  # Number of agents
 lat_accept = 0.2  # latitude of acceptance by agent
-lat_reject = 1.2  # latitude of rejection by agent
+lat_reject = 1.4  # latitude of rejection by agent
 cult = 20  # percentage of cultural exchange
 f_size = 5  # size of a single feature
 number_of_traits = 9  # number of traits per feature (range from 0 to 9)
@@ -44,13 +44,15 @@ def share():
             if feature_i[change] != feature_j[change]:
                 feature_i[change] = feature_j[change]
                 break
-        if diff <= lat_accept:
+        if diff < lat_accept:
             agent[i] = (mu * agent[j]) + ((1 - mu) * agent[i])
             agent[j] = (mu * opi1) + ((1 - mu) * agent[j])
         elif diff > lat_reject:
             agent[i] = ((1 + mu) * agent[i]) - (mu * agent[j])
             agent[j] = ((1 + mu) * agent[j]) - (mu * opi1)
-
+        else:
+            agent[i] = agent[i]
+            agent[j] = agent[j]
     elif diff > lat_reject:
         agent[i] = ((1 + mu) * agent[i]) - (mu * agent[j])
         agent[j] = ((1 + mu) * agent[j]) - (mu * opi1)
@@ -80,7 +82,6 @@ def extrePlot():  # iteration Vs Extremists plot
 def cluster():
     cm = []
     km = []
-    iteration = np.arange(1, N + 1)
     epsilon = 0.05
     ctr = 0
     for it in range(max_iter):
@@ -143,10 +144,8 @@ main()
 # you can uncomment only one function and use it to run that specific part of the model
 # (use one function at a time, running two might not give accurate results).
 """
-alliter()
-
+diffusion()
 cluster()
 extrePlot()
+alliter()
 """
-
-diffusion()
