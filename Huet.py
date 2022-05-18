@@ -5,9 +5,9 @@ import matplotlib.pyplot as plt
 import networkx as nx
 
 mu = 0.5  # Kinetic Parameter representing velocity of rejection
-U = 0.25 # Uncertainty for attitudes
-delta = 0  # confidence threshold for uncertainty
-max_iter = 100000  # Number of iterations (Time count)
+U = 0.5 # Uncertainty for attitudes
+delta = 0.5  # confidence threshold for uncertainty
+max_iter = 5000000  # Number of iterations (Time count)
 N = 1000  # Number of agents
 
 
@@ -28,7 +28,7 @@ def main():
     at2 = [random.uniform(-1, 1) for i in range(0, N)]  # assigning between -1 and 1 for attitudes
 
 
-def share():  # The part where interaction occurs and the attitudes are updated
+def share():  # the part where interaction occurs and the attitudes are updated
     global at1, at2, agenti
 
     for randomagent in range(N):
